@@ -3,12 +3,13 @@ package jdbc.connection;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.text.MessageFormat;
 import java.util.Properties;
 
 public class GetConnection {
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException, IOException {
-//       getConnection5();
+       getConnection6();
 
 
     }
@@ -112,6 +113,18 @@ public class GetConnection {
         //4 获取连接
         Connection connection = DriverManager.getConnection(url, user, password);
 
+        System.out.println(connection);
+    }
+
+
+    public static void getConnection6() throws SQLException {
+        String host = "39.105.49.35";
+        String port = "3306";
+        String user = "root";
+        String passwd = "123456";
+        String db = "test";
+        String url = MessageFormat.format("jdbc:mysql://{0}:{1}/{2}?user={3}&password={4}", host, port, db,user,passwd);
+        Connection connection = DriverManager.getConnection(url);
         System.out.println(connection);
     }
 }
